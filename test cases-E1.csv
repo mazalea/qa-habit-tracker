@@ -1,0 +1,203 @@
+No,Test Case ID,Module,Feature,Test Scenario,Type,Priority,Pre-conditions,Test Steps,Expected Result,Test Date,Actual Result,Initial Status,Issue Types,Bug ID,Final Status,Evidence,Notes / Bug ID
+1,TC01-E1,Settings,Language,Switch from ID to EN,Normal,High,"App open, language is ID","1. Open Settings. 
+2. Switch language toggle to EN.",Toggle shows EN. Settings text changes to English immediately.,20/10/2026,As expected,Pass,,,,,
+2,TC02-E1,Settings,Language,All screens are in EN,Normal,High,Language is EN. At least 1 habit and 1 todo exist (run after other modules),"Open Habit, Todo, Calendar, every Reports page, Shop, Closet, Settings.","No Indonesian text remains, including buttons, labels, and empty states.",20/10/2026,As expected,Pass,,,,,
+3,TC03-E1,Settings,Language,Messages and dialogs are in EN,Normal,Medium,Language is EN. At least 1 habit exists,"1. Trigger an Undo message. 
+2. Trigger a delete confirmation. 
+3. Trigger a form validation message.",All messages and confirmations are in English.,20/10/2026,Messages are still in Indonesian,Fail,Bug,BUG-001,Pass,,
+4,TC04-E1,Settings,Language,Switch from EN back to ID,Normal,High,Language is EN,"1. Switch toggle to ID. 
+2. Open the main screens.",All UI text changes to Indonesian.,20/10/2026,As expected,Pass,,,,,
+5,TC05-E1,Settings,Language,User-entered data is not translated,Edge,Medium,Language is ID,"1. Create a habit named “Minum air”. 
+2. Switch to EN.",Habit name stays “Minum air”.,20/10/2026,As expected,Pass,,,,,
+6,TC06-E1,Settings,Appearance,Switch from light to dark,Normal,High,Appearance is light,"1. Open Settings. 
+2. Switch appearance toggle to dark.",Whole UI changes to dark mode immediately.,20/10/2026,As expected,Pass,,,,,
+7,TC07-E1,Settings,Appearance,Dark mode is readable on all screens,Normal,High,Dark mode on. Sample data exists (run after other modules),"Open every screen, dialog, and Reports chart.",Text and icons are readable. No white boxes or low-contrast text.,20/10/2026,As expected,Pass,,,,,
+8,TC08-E1,Settings,Appearance,Switch from dark back to light,Normal,Medium,Dark mode on,Switch toggle to light.,Whole UI changes to light mode.,20/10/2026,As expected,Pass,,,,,
+9,TC09-E1,Settings,Sound effect,Sound plays when on,Normal,Medium,Sound on. At least 1 habit exists,"1. Complete a habit. 
+2. Note which other actions play a sound.",A sound plays on completion.,20/10/2026,As expected,Pass,,,,,
+10,TC10-E1,Settings,Sound effect,No sound when off,Normal,Medium,Sound off. At least 1 habit exists,Complete a habit.,No sound plays.,20/10/2026,As expected,Pass,,,,,
+11,TC11-E1,Settings,Reminder,Turn reminder on,Normal,Medium,Reminder off,"1. Open Settings. 
+2. Turn reminder toggle on.",Toggle shows on. Note any extra prompt or option that appears.,20/10/2026,As expected,Pass,,,,,
+12,TC12-E1,Settings,Reminder,Turn reminder off,Normal,Medium,Reminder on,Turn reminder toggle off.,Toggle shows off.,20/10/2026,As expected,Pass,,,,,
+13,TC13-E1,Todo,Create todo,Create todo for today,Normal,High,App open,"1. Tap add todo. 
+2. Enter name “Beli buku”. 
+3. Select today. 
+4. Save.",Todo appears in today’s list with the entered name.,20/10/2026,As expected,Pass,,,,,
+14,TC14-E1,Todo,Create todo,Create todo for tomorrow,Normal,High,App open,"1. Add a todo named “Cetak tugas”. 
+2. Select tomorrow. 
+3. Save. 
+4. Check today’s list, then tomorrow in Calendar.",Todo is not in today’s list. It appears on tomorrow’s date.,20/10/2026,As expected,Pass,,,,,
+15,TC15-E1,Todo,Create todo,Create todo for a chosen date,Normal,Medium,App open,"1. Add a todo. 
+2. Choose a date 3 days ahead. 
+3. Save. 
+4. Open that date in Calendar.",Todo appears only on the chosen date.,20/10/2026,As expected,Pass,,,,,
+16,TC16-E1,Todo,Create todo,Empty name,Negative,High,App open,"1. Tap add todo. 
+2. Leave the name empty. 
+3. Try to save.",Todo is not created. ,20/10/2026,As expected,Pass,,,,,
+17,TC17-E1,Todo,Create todo,Very long name,Edge,Medium,App open,"1. Add a todo with a max-character name (80 char). 
+2. Save.",Todo is saved. Layout does not break (text wraps or is truncated).,20/10/2026,As expected,Pass,,,,,
+18,TC18-E1,Todo,Create todo,Special characters and emoji,Edge,Low,App open,"1. Add a todo named Test <b>& 'quote' 😀. 
+2. Save.",Name is shown exactly as typed. No broken layout or formatting.,20/10/2026,As expected,Pass,,,,,
+19,TC19-E1,Todo,Create todo,Two todos with the same name,Edge,Low,App open,Create two todos with the same name and date.,Both appear as separate entries.,20/10/2026,As expected,Pass,,,,,
+20,TC20-E1,Todo,Edit todo,Edit name,Normal,High,A todo exists,"1. Open the todo’s edit option. 
+2. Change the name. 
+3. Save. 
+4. Refresh.",New name is shown and persists after refresh.,20/10/2026,As expected,Pass,,,,,
+21,TC21-E1,Todo,Edit todo,Edit date,Normal,High,A todo exists for today,"1. Edit the todo. 
+2. Change the date to tomorrow. 
+3. Save.",Todo leaves today’s list and appears on tomorrow’s date.,20/10/2026,As expected,Pass,,,,,
+22,TC22-E1,Todo,Edit todo,Edit to an empty name,Negative,Medium,A todo exists,"1. Edit the todo. 
+2. Clear the name. 
+3. Try to save.",Not saved. A validation message is shown. Original name remains.,20/10/2026,Saved with original name. No validation message.,Fail,Improvement,IMP-001,,,
+23,TC23-E1,Todo,Edit todo,Cancel edit,Edge,Low,A todo exists,"1. Edit the todo and change the name. 
+2. Cancel or close without saving.",Original name remains.,20/10/2026,As expected,Pass,,,,,
+24,TC24-E1,Todo,Delete todo,Delete a todo,Normal,High,A todo exists,"1. Delete the todo. 
+2. Refresh the page.",Todo is removed immediately with no confirmation. It stays gone after refresh.,20/10/2026,As expected,Pass,,,,,
+25,TC25-E1,Todo,Delete todo,Delete a completed todo,Edge,Medium,A completed todo exists. Note current counter and XP,"1. Delete the completed todo. 
+2. Check counter and XP.",Todo is removed. Record whether counter and XP change.,20/10/2026,As expected,Pass,,,,,
+26,TC26-E1,Todo,Delete todo,Delete the only todo,Edge,Low,Exactly one todo exists,Delete it,Todo list shows an empty state with no errors.,20/10/2026,As expected,Pass,,,,,
+27,TC27-E1,Todo,Undo todo,Undo delete,Normal,High,A todo exists,"1. Delete the todo. 
+2. Tap Undo in the message.",Todo is restored with the same name and date.,20/10/2026,As expected,Pass,,,,,
+28,TC28-E1,Todo,Undo todo,Undo complete,Normal,High,A not-done todo exists. Note current counter and XP,"1. Complete the todo. 
+2. Tap Undo in the message.",Todo returns to not done. Counter and XP return to the previous values.,20/10/2026,As expected,Pass,,,,,
+29,TC29-E1,Todo,Undo todo,Undo after two actions,Edge,Low,Two todos exist,"1. Delete todo A. 
+2. Immediately delete todo B. 
+3. Tap Undo.",Undo the latest deleted todo.,20/10/2026,As expected,Pass,,,,,
+30,TC30-E1,Todo,Complete todo,Complete a todo,Normal,High,A not-done todo exists. Note current counter and XP,Tap the todo.,Todo is marked done and stays in place. Completed counter and XP increase by 1.,20/10/2026,As expected,Pass,,,,,
+31,TC31-E1,Todo,Complete todo,Tap a completed todo again,Edge,Medium,A completed todo exists. Note current counter and XP,Tap the completed todo again.,XP and counter do not increase a second time. Record whether the todo becomes not done.,20/10/2026,As expected,Pass,,,,,
+32,TC32-E1,Todo,Complete todo,Complete several todos,Normal,Medium,Three not-done todos exist. Note current counter and XP,Complete all three.,Counter and XP increase by 3 in total.,20/10/2026,As expected,Pass,,,,,
+33,TC33-E1,Habit,Create habit,"Create check-off habit, every day",Normal,High,App open,"1. Tap add habit. 
+2. Enter name “Minum air”. 
+3. Type: check off. 
+4. Schedule: every day. 
+5. Save.",Habit appears in today’s list with the entered name.,21/10/2026,As expected,Pass,,,,,
+34,TC34-E1,Habit,Create habit,Create count habit with a target,Normal,High,App open,"1. Add a habit named “Push up”. 
+2. Type: count.
+3. Set target 3. 
+4. Save.",Habit appears with progress 0/3.,21/10/2026,As expected,Pass,,,,,
+35,TC35-E1,Habit,Create habit,Schedule: pick days,Normal,High,App open,"1. Add a habit. 
+2. Schedule: pick days, select only tomorrow’s weekday. 
+3. Save. 
+4. Check today and tomorrow in Calendar.",Habit is not shown today. It appears on tomorrow and on that weekday only.,21/10/2026,As expected,Pass,,,,,
+36,TC36-E1,Habit,Create habit,Schedule: times per week,Normal,Medium,App open,"1. Add a habit. 
+2. Schedule: times per week, set 3. 
+3. Save.",Habit is saved with the chosen weekly frequency.,21/10/2026,As expected,Pass,,,,,
+37,TC37-E1,Habit,Create habit,Time of day options,Normal,Medium,App open,"Create four habits, one each for morning, midday, evening, anytime.",All four are saved with the selected time of day.,21/10/2026,As expected,Pass,,,,,
+38,TC38-E1,Habit,Create habit,Icon and color are saved,Normal,Low,App open,"1. Add a habit. 
+2. Choose an icon and a color. 
+3. Save.",Habit shows the chosen icon and color.,21/10/2026,As expected,Pass,,,,,
+39,TC39-E1,Habit,Create habit,Empty name,Negative,High,App open,"1. Tap add habit. 
+2. Leave the name empty. 
+3. Save.",Habit is not created. A validation message is shown.,21/10/2026,As expected,Pass,,,,,
+40,TC40-E1,Habit,Create habit,Very long name,Edge,Medium,App open,"1. Add a habit with a max-character name (40 char). 
+2. Save.",Habit is saved. Layout does not break (text wraps or is truncated).,21/10/2026,As expected,Pass,,,,,
+41,TC41-E1,Habit,Create habit,Count target is 0 or negative,Negative,Medium,App open,"1. Add a count habit. 
+2. Enter target 0, then -1. 
+3. Save.",Not saved with an invalid target. A validation message is shown.,21/10/2026,As expected,Pass,,,,,
+42,TC42-E1,Habit,Create habit,Pick days with no day selected,Negative,Medium,App open,"1. Add a habit. 
+2. Schedule: pick days, select no day. 
+3. Save.","Not saved, or a validation message is shown. Record the actual behavior.",21/10/2026,As expected,Pass,,,,,
+43,TC43-E1,Habit,Help me pick habits,Get suggestions,Normal,Medium,App open,"1. Open Help me pick habits. 
+2. Select a goal. 
+3. Follow the flow to the suggestions. 
+4. Repeat with different choices.",Suggestions match the chosen activities and goals. ,21/10/2026,As expected,Pass,,,,,
+44,TC44-E1,Habit,Help me pick habits,Add a suggested habit,Normal,Medium,Suggestions are shown,"1. Select a suggestion. 
+2. Save.",Habit appears in the habit list with the suggested settings.,21/10/2026,As expected,Pass,,,,,
+45,TC45-E1,Habit,Habit ideas,Pick every idea,Normal,Medium,App open. Delete the created habits afterwards,Pick each of the 8 ideas one by one and save.,All 8 ideas can be picked and each is saved as a habit.,21/10/2026,As expected,Pass,,,,,
+46,TC46-E1,Habit,Edit habit,Edit name,Normal,High,A habit exists,"1. Open the habit’s edit option. 
+2. Change the name. 
+3. Save. ",New name is shown.,21/10/2026,As expected,Pass,,,,,
+47,TC47-E1,Habit,Edit habit,Edit schedule and time of day,Normal,High,"A morning, every-day habit exists","1. Edit the habit. 
+2. Change time of day to evening and schedule to pick days. 
+3. Save.",Habit moves to the Evening group and shows only on the chosen days.,21/10/2026,As expected,Pass,,,,,
+48,TC48-E1,Habit,Edit habit,Edit to an empty name,Negative,Medium,A habit exists,"1. Edit the habit. 
+2. Clear the name. 
+3. Try to save.",Not saved. A validation message is shown.,21/10/2026,As expected,Pass,,,,,
+49,TC49-E1,Habit,Edit habit,Edit keeps today’s progress,Edge,Medium,A habit completed today exists. Note counter and XP,"1. Edit the habit’s name. 
+2. Save. 
+3. Check its state and the counter.",Habit stays done. Counter and XP do not change.,21/10/2026,As expected,Pass,,,,,
+50,TC50-E1,Habit,Delete habit,Delete with confirmation,Normal,High,A habit exists,"1. Tap delete. 
+2. Tap again to confirm. 
+3. Refresh.",Habit is removed and stays gone after refresh.,21/10/2026,As expected,Pass,,,,,
+51,TC51-E1,Habit,Delete habit,Single tap does not delete,Edge,High,A habit exists,"1. Tap delete once. 
+2. Do nothing for a few seconds. 
+3. Tap elsewhere.",Habit is not deleted.,21/10/2026,As expected,Pass,,,,,
+52,TC52-E1,Habit,Delete habit,Delete a habit with history,Edge,High,A habit with completions on several days exists. Run after Reports data is ready,"1. Note Calendar and Reports values. 
+2. Delete the habit. 
+3. Check Calendar and Reports again.",Habit is removed. ,21/10/2026,As expected,Pass,,,,,
+53,TC53-E1,Habit,Archive habit,Archive a habit,Normal,Medium,A habit exists,"1. Archive the habit. 
+2. Refresh.",Habit leaves the active list and stays archived after refresh.,21/10/2026,As expected,Pass,,,,,
+54,TC54-E1,Habit,Archive habit,Archived habit and today’s progress,Edge,Medium,"Two habits exist, one completed, one not done","1. Note today’s progress. 
+2. Archive the not-done habit. 
+3. Check today’s progress.",Progress recalculates without the archived habit.,21/10/2026,As expected,Pass,,,,,
+55,TC55-E1,Habit,Undo habit,Undo delete,Normal,High,A habit exists,"1. Delete the habit (confirm). 
+2. Tap Undo in the message.",Habit is restored with the same settings.,21/10/2026,As expected,Pass,,,,,
+56,TC56-E1,Habit,Undo habit,Undo archive,Normal,High,A habit exists,"1. Archive the habit. 
+2. Tap Undo in the message.",Habit returns to the active list.,21/10/2026,As expected,Pass,,,,,
+57,TC57-E1,Habit,Undo habit,Undo check,Normal,High,A not-done check-off habit exists. Note counter and XP,"1. Complete the habit. 
+2. Tap Undo in the message.",Habit returns to not done. Counter and XP return to the previous values.,21/10/2026,As expected,Pass,,,,,
+58,TC58-E1,Habit,Undo habit,Undo message disappears,Edge,Medium,A habit exists,"1. Archive the habit. 
+2. Wait until the message disappears. 
+3. Try to undo.",User can undo archive in the archive section,21/10/2026,As expected,Pass,,,,,
+59,TC59-E1,Habit,Complete habit (check off),Complete a habit,Normal,High,A not-done check-off habit exists. Note counter and XP,Tap the habit.,Habit moves to Done. Completed counter and XP increase by 1.,21/10/2026,As expected,Pass,,,,,
+60,TC60-E1,Habit,Complete habit (count amount),Count increases per tap,Normal,High,A count habit with target 3 exists. Note counter and XP,Tap the habit once.,Progress shows 1/3. Habit stays in the active list.,21/10/2026,As expected,Pass,,,,,
+61,TC61-E1,Habit,Complete habit (count amount),Reach the target,Normal,High,A count habit with target 3 exists. Note counter and XP,Tap the habit 3 times.,"Habit moves to Done. Counter and XP increase by 1, only once.",21/10/2026,As expected,Pass,,,,,
+62,TC62-E1,Habit,Complete habit (count amount),Tap beyond the target,Edge,Medium,A completed count habit exists. Note counter and XP,Tap the habit again after the target is reached.,Counter and XP do not increase again. ,21/10/2026,As expected,Pass,,,,,
+63,TC63-E1,Habit,Habit grouping,Habits are grouped by time of day,Normal,High,"Four habits exist: morning, midday, evening, anytime",Open today’s list.,Each habit appears in the matching group.,21/10/2026,As expected,Pass,,,,,
+64,TC64-E1,Habit,Habit grouping,Completed habit leaves its group,Normal,Medium,"A morning habit exists, not done",Complete the habit.,Habit moves to Done and disappears from the Morning group.,21/10/2026,As expected,Pass,,,,,
+65,TC65-E1,Habit,Habit grouping,Empty groups,Edge,Low,Only one anytime habit exists,Open today’s list.,Empty groups are hidden. No errors.,21/10/2026,As expected,Pass,,,,,
+66,TC66-E1,Calendar,Calendar view,Default view is today,Normal,High,Habits and todos exist for today,Open main page,Today’s date is selected. Habits and todos due today are listed.,21/10/2026,As expected,Pass,,,,,
+67,TC67-E1,Calendar,Calendar view,Select another date,Normal,High,Items exist on at least 2 different dates,"1. Select a different date. 
+2. Compare the list with the data you created.",List shows only the habits and todos due on that date.,21/10/2026,As expected,Pass,,,,,
+68,TC68-E1,Calendar,Calendar view,Pick-days habit shows on its days only,Normal,High,A habit scheduled on pick days (e.g. Mon and Wed) exists,Select a Monday and Wednesday.,Habit appears on Monday and Wednesday only.,21/10/2026,As expected,Pass,,,,,
+69,TC69-E1,Calendar,Calendar view,Todo shows on its date only,Normal,High,A todo exists for a chosen date,"1. Select the todo’s date. 
+2. Select the day before and after.",Todo appears only on its own date.,21/10/2026,As expected,Pass,,,,,
+70,TC70-E1,Calendar,Calendar view,Ring shows partial progress,Normal,High,A date with 4 due items. Complete 2 of them,Look at the progress ring of that date.,Ring is partly filled in proportion to progress (about half). ,21/10/2026,As expected,Pass,,,,,
+71,TC71-E1,Calendar,Calendar view,Ring is full on a perfect day,Normal,High,A date with 3 due habits,"1. Complete all due habits. 
+2. Check the ring.",Ring is full. Record whether todos also count toward a perfect day.,21/10/2026,As expected,Pass,,,,,
+72,TC72-E1,Calendar,Calendar view,Ring is empty with no completions,Normal,Medium,"A date with due items, none completed",Look at the ring of that date.,Ring is empty (0%).,21/10/2026,As expected,Pass,,,,,
+73,TC73-E1,Calendar,Calendar view,Date with nothing due,Edge,Medium,A date with no habits or todos,Select that date,Empty state is shown. No errors. ,21/10/2026,As expected,Pass,,,,,
+74,TC74-E1,Calendar,Calendar view,Complete an item on a past date,Edge,Medium,A past date with a not-done habit. Note counter and XP,"1. Select the past date. 
+2. Try to complete the habit.",Habit moves to Done. Completed counter and XP increase by 1.,21/10/2026,As expected,Pass,,,,,
+75,TC75-E1,Calendar,Calendar view,Complete an item on a future date,Edge,Medium,A future date with a due habit. Note counter and XP,1. Select the future date. ,Future dates can not be selected.,21/10/2026,As expected,Pass,,,,,
+76,TC76-E1,Calendar,Calendar view,Ring updates after completing from today’s list,Normal,High,"Today has due items, none completed","1. Complete one habit from the main list. 
+2. Open Calendar and look at today’s ring.",Ring increases to match the new progress.,21/10/2026,As expected,Pass,,,,,
+77,TC77-E1,Calendar,Calendar view,Ring updates after undo,Normal,High,A habit completed today.,"1. Undo the completion. 
+2. Check today’s ring in Calendar.",Ring decreases to match the new progress.,21/10/2026,As expected,Pass,,,,,
+78,TC78-E1,Calendar,Calendar view,Navigate between months,Edge,Medium,Data exists in the current and previous month,"1. Go to the previous month. 
+2. Check dates and rings.",Dates and rings are correct on both sides of the month boundary.,21/10/2026,As expected,Pass,,,,,
+79,TC79-E1,Calendar,Calendar view,Archived habit and past rings,Edge,Medium,A habit with completions on past dates exists,"1. Note the ring of a past date. 
+2. Archive the habit. 
+3. Check the same date again.",The past ring changes after archiving.,21/10/2026,As expected,Pass,,,,,
+80,TC80-E1,Reports,Recap story (this week),Values match the data,Normal,High,Dataset R loaded,1) Open the weekly recap. 2) Step through every page. 3) Compare each number with Dataset R.,All numbers match the manual count for the past week.,22/10/2026,As expected,Pass,,,,,
+81,TC81-E1,Reports,Recap story (this week),No data this week,Edge,Medium,Dataset with no completions this week,1) Open the weekly recap.,Empty state or zero values are shown. No errors or NaN.,22/10/2026,As expected,Pass,,,,,
+82,TC82-E1,Reports,Recap story (this week),Updates after completing an item,Normal,Medium,Dataset R loaded. Note current recap numbers,1) Complete one more habit today. 2) Open the weekly recap.,Numbers increase to match the new completion.,22/10/2026,As expected,Pass,,,,,
+83,TC83-E1,Reports,Recap story (this week),Navigate the story,Normal,Low,Dataset R loaded,1) Go forward through all pages. 2) Go back. 3) Close and reopen it.,Navigation works in both directions. Closing and reopening does not break the page.,22/10/2026,As expected,Pass,,,,,
+84,TC84-E1,Reports,Recap story (this month),Values match the data,Normal,High,Dataset R loaded,1) Open the monthly recap. 2) Compare each number with Dataset R.,All numbers match the manual count for the past month.,22/10/2026,As expected,Pass,,,,,
+85,TC85-E1,Reports,Recap story (this month),No data this month,Edge,Medium,Dataset with no completions this month,1) Open the monthly recap.,Empty state or zero values are shown. No errors or NaN.,22/10/2026,As expected,Pass,,,,,
+86,TC86-E1,Reports,Weekly progress,Values match the data,Normal,High,Dataset R loaded,1) Open Weekly progress. 2) Compare the progress with Dataset R.,Displayed progress matches the manual count for the week.,22/10/2026,As expected,Pass,,,,,
+87,TC87-E1,Reports,Weekly progress,Perfect days are counted,Normal,High,Dataset R has 2 days where all due habits are done and 1 day where only todos are done,1) Open Weekly progress. 2) Read the perfect days count.,Perfect days match your count. Record whether todos count toward a perfect day.,22/10/2026,As expected,Pass,,,,,
+88,TC88-E1,Reports,Weekly progress,Archived habit,Edge,Medium,Dataset R loaded. A habit with completions this week exists,1) Note the progress. 2) Archive the habit. 3) Open Weekly progress again.,Record whether progress and perfect days change after archiving.,22/10/2026,As expected,Pass,,,,,
+89,TC89-E1,Reports,Weekly progress,Deleted habit,Edge,Medium,Backup taken. Dataset R loaded,1) Note the progress. 2) Delete one habit. 3) Open Weekly progress again.,Record how progress and perfect days change. No errors.,22/10/2026,As expected,Pass,,,,,
+90,TC90-E1,Reports,Weekly progress,No data,Edge,Medium,No habits or no completions this week,Open Weekly progress.,Empty state or zero is shown. No errors or NaN.,22/10/2026,As expected,Pass,,,,,
+91,TC91-E1,Reports,Monthly progress,Grid matches completions,Normal,High,Dataset R loaded,1) Open Monthly progress. 2) Compare each habit’s grid with the completion dates in Dataset R.,Each cell is marked correctly for each date and habit.,22/10/2026,As expected,Pass,,,,,
+92,TC92-E1,Reports,Monthly progress,Perfect days in the month,Normal,High,Dataset R loaded,1) Open Monthly progress. 2) Read the perfect days count.,Count matches your manual count.,22/10/2026,As expected,Pass,,,,,
+93,TC93-E1,Reports,Monthly progress,Days a habit is not scheduled,Edge,Medium,"A pick-days habit (Mon, Wed, Fri) exists with history","1) Open Monthly progress. 2) Look at the Tue, Thu, Sat, and Sun cells of that habit.",Record whether not-scheduled days look different from missed days.,22/10/2026,As expected,Pass,,,,,
+94,TC94-E1,Reports,Monthly progress,Habit created mid-month,Edge,Medium,A habit created 10 days ago exists,1) Open Monthly progress. 2) Look at the days before the habit was created.,Days before creation are not counted as missed.,22/10/2026,As expected,Pass,,,,,
+95,TC95-E1,Reports,Monthly progress,No data,Edge,Medium,No habits or no completions this month,Open Monthly progress.,Empty state or empty grid is shown. No errors.,22/10/2026,As expected,Pass,,,,,
+96,TC96-E1,Reports,Daily progress,Averages match the data,Normal,High,Dataset R loaded,"1) Open Daily progress. 
+2) Compute the average % per weekday from Dataset R. 
+3) Compare with each bar.",Each bar matches computed average.,22/10/2026,As expected,Pass,,,,,
+97,TC97-E1,Reports,Most consistent,Ranking matches streaks,Normal,High,Dataset R loaded with habits of different streak lengths,1) Open Most consistent. 2) Compare the ranking with the streaks computed from Dataset R.,Ranking order and streak values match your computation.,22/10/2026,As expected,Pass,,,,,
+98,TC98-E1,Reports,Most consistent,Fewer than 10 habits,Edge,Medium,Only 3 habits exist,Open Most consistent.,Only the 3 habits are listed. No empty rows or errors.,22/10/2026,As expected,Pass,,,,,
+99,TC99-E1,Reports,Most consistent,More than 10 habits,Edge,Medium,Backup taken. 12 habits exist with different streaks,Open Most consistent.,"Only the top 10 are shown, in the correct order.",22/10/2026,As expected,Pass,,,,,
+100,TC100-E1,Reports,Most consistent,Archived or deleted habit,Edge,Medium,A habit in the ranking exists,"1) Archive it and check the ranking. 2) Restore the backup, delete it, and check again.",It leaves the ranking,22/10/2026,As expected,Pass,,,,,
+101,TC101-E1,,,,,,,,,,,,,,,,
+102,TC102-E1,,,,,,,,,,,,,,,,
+103,TC103-E1,,,,,,,,,,,,,,,,
+104,TC104-E1,,,,,,,,,,,,,,,,
+105,TC105-E1,,,,,,,,,,,,,,,,
+106,TC106-E1,,,,,,,,,,,,,,,,
+107,TC107-E1,,,,,,,,,,,,,,,,
+108,TC108-E1,,,,,,,,,,,,,,,,
+109,TC109-E1,,,,,,,,,,,,,,,,
