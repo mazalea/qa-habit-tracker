@@ -1,0 +1,8 @@
+ID,Description,Type,Severity,Priority,Relevant Test Case,Number of TC,Steps to Reproduce,Expected,Actual,Status,Notes
+BUG-001,Messages are still in Indonesian,Bug,High,P1,TC03-E1,1,"1. Trigger an Undo message. 
+2. Trigger a delete confirmation. 
+3. Trigger a form validation message.",All messages and confirmations are in English.,Messages are still in Indonesian,Closed,
+IMP-001,Add a validation message when the user edit a todo to an empty name,Improvement,Medium,P2,TC22-E1,1,"1. Edit the todo. 
+2. Clear the name. 
+3. Try to save.",Not saved. A validation message is shown. Original name remains.,Saved with original name. No validation message.,Open,
+CR-001,,,,,,,,,,,
