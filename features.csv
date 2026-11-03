@@ -1,0 +1,38 @@
+ID,Module,Feature,Description
+F01,Habit,Create habit,User creates a habit with a name and basic settings.
+F02,Habit,Help me pick habits,User gets habit suggestions customized to their daily activities and goals.
+F03,Habit,Habit ideas,User picks a habit from 8 preset ideas.
+F04,Habit,Edit habit,User changes a habit’s settings.
+F05,Habit,Delete habit,User permanently deletes a habit. Requires a second tap to confirm.
+F06,Habit,Archive habit,User archives a habit.
+F07,Habit,Undo habit,"User reverses a delete, archive, or check from the toast shown after the action."
+F08,Habit,Complete habit (check off),"User taps a habit to mark it done. It moves to Done, the completed counter and XP increase by 1."
+F09,Habit,Complete habit (count amount),"User taps a habit each time they do it until the target is reached. It then moves to Done, the completed counter and XP increase by 1."
+F10,Habit,Habit grouping,"Habits are grouped by time of day: morning, midday, evening, anytime."
+F11,Todo,Create todo,"User creates a todo with a name and a date (today, tomorrow, or a chosen day)."
+F12,Todo,Edit todo,User changes a todo’s name or date.
+F13,Todo,Delete todo,User deletes a todo. No confirmation required.
+F14,Todo,Undo todo,User reverses a todo action from the toast shown after the action.
+F15,Todo,Complete todo,User taps a todo to mark it done. It stays in place until the day changes. The completed counter and XP increase by 1.
+F16,Calendar,Calendar view,"User sees the habits and todos due on a selected day. Defaults to today. Each date shows a progress ring, full on a perfect day."
+F17,Reports,Recap story (this week),Summary of the user’s habit and todo progress over the past week.
+F18,Reports,Recap story (this month),Summary of the user’s habit and todo progress over the past month.
+F19,Reports,Weekly progress,"User sees overall habit progress for the week, including perfect days."
+F20,Reports,Monthly progress,"User sees overall habit progress for the month, including perfect days. Shown per habit in a GitHub-style grid."
+F21,Reports,Daily progress,"User sees average habit progress (%) per weekday, Monday to Sunday, as a bar chart."
+F22,Reports,Most consistent,User sees the streak rankings for each habit.
+F23,Gamification,Rename,User renames the Bulet character.
+F24,Gamification,Shop,User buys Bulet accessories and streak freezes with diamonds.
+F25,Gamification,Closet,Purchased accessories are stored in the closet.
+F26,Gamification,XP & Level,Each completed habit or todo gives 1 XP. Each level requires a different amount of XP.
+F27,Gamification,Diamond,User earns 20 diamonds on each level up.
+F28,Gamification,Streak,Streak increases by 1 when the user completes at least 1 habit that day.
+F29,Gamification,Streak freeze,User can hold up to 2 streak freezes. One is used automatically when the user misses a day.
+F30,Settings,Language,Toggle switches the whole UI between ID and EN.
+F31,Settings,Appearance,Toggle switches the whole UI between light and dark mode.
+F32,Settings,Sound effect,Toggle turns sound on or off.
+F33,Settings,Reminder,Toggle turns reminder notifications on or off.
+F34,Data & Account,Backup,User downloads all habit data and logs as a JSON file.
+F35,Data & Account,Restore,User uploads a data file or pastes text to restore habit data and logs.
+F36,Data & Account,Delete all data,User deletes all data. Requires a second tap to confirm.
+F37,Data & Account,Sign in,"User enters an email and a verification code. After sign in, habit data and logs are saved to the cloud."
