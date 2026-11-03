@@ -1,0 +1,76 @@
+,,,,,,,,,,,,,
+,Habit Tracker Web App: Functional Test Plan v1.0,,,,,,,,,,,,
+,Introduction,"Habit Tracker is a web app for tracking daily habits and todos. Users complete habits and todos to earn XP, level up, and collect diamonds, which they can spend on accessories and streak freezes. This plan covers the functional testing of the app at https://habit-tracker-snowy-seven.vercel.app/.",,,,Test Plan ID:,TP-HABIT-001,,,,,,
+,,,,,,Test Plan Author:,Azalea,,,,,,
+,,,,,,Document Version:,v1.0,,,,,,
+,Objectives,"1. Verify that every feature works as described in the feature inventory.
+2. Find defects in the high-risk areas: date logic, XP/level/diamond chain, and data backup/restore/delete.
+3. Verify data persists correctly after refresh, reopen, and restore.
+4. Confirm the app is usable on both E1 and E2.
+5. Produce a test case sheet, bug log, and coverage summary per feature.",,,,Date:,15 October 2026,,,,,,
+,,,,,,Tools:,Manual testing/Google Sheet,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,Scope,"In scope:
+- All 37 features across 7 modules, listed under Test Items.
+- Functional behavior, data persistence, date-based logic (day change, streak, perfect day), and UI language and appearance switching.
+- Environments: E1 Chrome on desktop, E2 web app on iPhone.
+
+Out of scope:
+- Performance, load, and security testing.
+- Other browsers (Firefox, Edge, Safari desktop), Android, and tablets.
+- Email delivery infrastructure behind Sign in (F37), tested only from the user’s side.
+- Reminder notifications actually being delivered (F33).",,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,,,,,,,,,,,,,
+,Test Item,Test Strategy,Testing Types,Features to be Tested,Features not to be Tested,Entry Criteria,Exit Criteria,Deliverables,Dependencies,Start Date,End Date,KPIs,Sign-off
+,TI-01 Habit,"Manual functional testing on E1 and E2. Each action is tested in its normal flow, then with edge inputs. Check that results persist after refresh and reopen.","Functional, data persistence, UI/UX on E1 and E2. Not applicable: unit, performance, security.","F01 Create new habit: all type, schedule, and time-of-day options; empty and very long name.
+F02 Help me pick habits: suggestions match the chosen activities and goals.
+F03 Habit ideas: all 8 ideas can be picked and saved.
+F04 Edit habit: each setting can be changed and saved.
+F05 Delete habit: second-tap confirmation, permanent removal.
+F06 Archive habit: habit leaves the active list.
+F07 Undo habit: undo works for delete, archive, and check, and fails gracefully after the message disappears.
+F08 and F09 Complete habit: move to Done, counter and XP +1, count reaches target.
+F10 Habit grouping: correct group for each time of day.",Visual quality of preset ideas and icons.,App reachable on E1 and E2; test data plan ready.,"All TI-01 test cases executed; no open High bug in create, complete, or delete; every failed case has a logged bug.",,XP behavior is verified in TI-05; Archive and Undo interact with Reports (TI-04).,21/10/2026,21/10/2026,"% executed, % passed, bugs by severity, at least 2 test cases per feature (1 normal, 1 negative/edge).",TRUE
+,TI-02 Todo,Manual functional testing on E1 and E2. Date handling is tested by changing the device date.,"Functional, data persistence, date-based logic. Not applicable: unit, performance, security.","F11 Create new todo: today, tomorrow, chosen date, empty name.
+F12 Edit todo: change name and date.
+F13 Delete todo: no confirmation, removal.
+F14 Undo todo: reverses the last action from the message.
+F15 Complete todo: stays in place until the day changes, counter and XP +1.",Todo features not listed in the feature inventory.,App reachable; ability to change the device date.,All TI-02 test cases executed; no open High bug in create or complete; every failed case has a logged bug.,,XP (TI-05) and Calendar (TI-03) display of todos.,20/10/2026,,"% executed, % passed, bugs by severity, at least 2 test cases per feature.",FALSE
+,TI-03 Calendar,Manual functional testing on E1 and E2 with prepared data across several dates. Progress rings are checked against actual completions.,"Functional, date-based logic, UI/UX. Not applicable: unit, performance, security.","F16 Calendar view: default is today, switching dates shows the correct habits and todos, ring fills in proportion to progress, full ring on a perfect day, no progress shows an empty ring.",Calendar behavior far in the future or past beyond the app’s normal use.,TI-01 and TI-02 completion flows work.,All TI-03 test cases executed; no open High bug in ring progress or date display; every failed case has a logged bug.,,"Habit and Todo data (TI-01, TI-02); Restore (F35) to load prepared multi-day data.",21/10/2026,21/10/2026,"% executed, % passed, bugs by severity, ring result matches expected progress in all tested dates.",TRUE
+,TI-04 Reports,Manual functional testing with prepared multi-day data. Displayed numbers are compared with a manual count of the same data.,"Functional, data accuracy, UI/UX on E1 and E2. Not applicable: unit, performance, security.","F17 and F18 Recap story: week and month summaries match the data.
+F19 Weekly progress and F20 Monthly progress: progress and perfect days are correct; grid view matches per-habit completions.
+F21 Daily progress: average percentage per weekday is correct.
+F22 Most consistent: top 10 streak ranking per habit, with fewer than 10 habits or ties.
+Empty state: reports with no data.",Chart rendering details and animation.,"TI-01, TI-02, and Restore (F35) work; prepared data file exists.",All TI-04 test cases executed; no open High bug where displayed numbers are wrong; every failed case has a logged bug.,,Habit and Todo data; Restore for loading test data.,22/10/2026,22/10/2026,"% executed, % passed, bugs by severity, % of displayed values that match the manual count.",TRUE
+,TI-05 Gamification,"Manual functional testing on E1 and E2. Each feature is tested alone first, then as one chain: complete habit/todo → XP → level up → diamonds → Shop → Closet. Streak and streak freeze are tested by changing the device date to simulate a new day or a missed day.","Functional, integration (the XP → level → diamond → Shop chain), data persistence (refresh, reopen, restore), and UI/UX checks on the two environments. Not applicable: unit, performance, security.","F23 Rename Bulet: valid name, empty name, very long name, special characters, persistence after refresh.
+F24 Shop: buy an accessory, buy a streak freeze, buy with insufficient diamonds, diamond balance after purchase.
+F25 Closet: purchased accessories appear and can be used.
+F26 XP & Level: +1 XP per completed habit or todo, XP behavior on undo, level up threshold.
+F27 Diamond: +20 diamonds per level up, balance persistence.
+F28 Streak: +1 when at least 1 habit is completed that day, no change from todo only, reset after a missed day.
+F29 Streak freeze: maximum 2 held, automatic use on a missed day, purchase blocked at the limit.","Visual quality of accessory artwork and balance of XP/price values (game design decisions, not defects).
+Performance and animation smoothness.","- App is live and reachable on E1 and E2.
+- F08, F09, and F15 (completing habits and todos) work well enough to generate XP.
+- Test data is ready (at least 3 habits and 3 todos).","- All TI-05 test cases executed.
+- No open High-severity bug in the XP → diamond → Shop chain, Streak, or Streak freeze.
+- Every failed test case has a logged bug.","Test case sheet (TI-05 rows), bug log entries, and the TI-05 rows of the Coverage tab.","- Habit and Todo completion features (TI-01, TI-02) for XP.
+- Ability to change the device date on desktop and iPhone for streak testing.
+- Backup/Restore (F34, F35) to save and reset a known state between tests.",,,"% of TI-05 test cases executed (target 100%), % passed, number of bugs by severity, feature coverage: every feature F23 to F29 has at least 2 test cases (1 normal, 1 negative/edge).",FALSE
+,TI-06 Settings,Manual functional testing on E1 and E2. Each toggle is checked across all screens and after refresh.,"Functional, UI/UX, data persistence. Not applicable: unit, performance, security.","F30 Language: every screen and message changes between ID and EN, setting persists.
+F31 Appearance: light and dark apply to all screens, no unreadable text or low contrast.
+F32 Sound effect: on and off, setting persists.
+F33 Reminder: toggle on and off, setting persists.",Actual delivery of reminder notifications,App reachable on E1 and E2.,All TI-06 test cases executed; no open High bug; every failed case has a logged bug.,,"None, but check all other modules’ screens when switching language and appearance.",20/10/2026,20/10/2026,"% executed, % passed, bugs by severity, number of screens checked per language and appearance.",TRUE
+,TI-07 Data & Account,"Manual functional testing on E1 and E2. Destructive tests are done last, always after a backup.","Functional, data integrity, integration (backup → delete → restore), basic usability. Not applicable: unit, performance, security.","F34 Backup: JSON file downloads and contains all habits and logs.
+F35 Restore: restore by file and by pasted text, invalid file, empty text, wrong format; data matches the backup.
+F36 Delete all data: second-tap confirmation; all data removed.
+F37 Sign in: valid email, invalid email, correct and wrong code, data saved to the cloud after sign in.",Security of the sign-in process; email delivery infrastructure.,A backup of a known data state exists; a working email address for testing.,All TI-07 test cases executed; no open High bug that causes data loss or failed restore; every failed case has a logged bug.,,Email service for the verification code; downloading and uploading files on E2 (iPhone).,,,"% executed, % passed, bugs by severity, restored data identical to the backup in all tested cases.",FALSE
